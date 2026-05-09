@@ -66,6 +66,14 @@ Website/GitHub rendering is not proof. Public surfaces route reviewers to proof 
 4. Review `HO-DET-001` in the [proof repo](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/HO-DET-001.md).
 5. Treat [hawkinsoperations.com](https://hawkinsoperations.com/) as public rendering only, not proof.
 
+## Roadmap And PR Propagation
+
+| Route | Purpose | Boundary |
+|---|---|---|
+| [Organization projects](https://github.com/orgs/HawkinsOperations/projects) | Roadmap and planning route for current work lanes | Project cards are coordination, not proof |
+| [PR template](../.github/pull_request_template.md) | Requires future PRs to declare artifact ID, truth surface, proof gate, downstream repo impact, and claim boundary | Soft enforcement until CI or required review blocks unsupported PR bodies |
+| [Cross-Repo Promotion Map](../governance/CROSS_REPO_PROMOTION_MAP.md) | Explains when source, validation, platform, proof, or website changes require downstream PRs | Cross-repo alignment follows detection ID, artifact ID, proof gate, evidence reference, and downstream truth impact, not PR number |
+
 ## Repo Map
 
 <table>
