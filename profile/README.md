@@ -1,3 +1,5 @@
+![HawkinsOperations Detection Engineering SOC](./assets/hawkinsoperations-banner.svg)
+
 # HawkinsOperations
 ## Claim-Control System for AI-Assisted Detection Engineering
 
