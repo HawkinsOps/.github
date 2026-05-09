@@ -83,18 +83,20 @@ Private/internal controlled lab runtime match status is tracked separately from 
 | Public-safe status | `NOT_PUBLIC_SAFE` |
 | Public runtime/signal proof | `BLOCKED` |
 
-## Supported Vs Blocked Claims
+## Current Claim Boundary
 
-| Supported within current public ceiling | Blocked as public/current claim |
+The left column lists what the current public ceiling supports. The right column lists claims this README explicitly does not make.
+
+| Supported within current public ceiling | Explicitly not claimed |
 |---|---|
-| Source exists | runtime-active |
-| Splunk source exists | signal-observed |
-| Synthetic validation passed within controlled scope | public-safe |
+| Source exists | runtime-active public proof |
+| Splunk source exists | signal-observed public proof |
+| Synthetic validation passed within controlled scope | public-safe status |
 | Platform contract guardrail exists as non-promotional guardrail | evidence-linked public proof |
 | Private/internal runtime match status is scoped private/internal | public-safe runtime proof |
-| Reviewer routing preserves `TEST_VALIDATED_SYNTHETIC_SCOPE` | production-ready, fleet-wide, enterprise deployed |
-| AI is support labor, not authority | Cribl-routed, Wazuh-routed, AWS-live |
-| Human review is required for promotion | autonomous SOC, AI-approved disposition, AI-decided disposition, analyst-approved disposition, production AutoSOC |
+| Reviewer routing preserves `TEST_VALIDATED_SYNTHETIC_SCOPE` | production-ready claim, fleet-wide claim, enterprise deployed claim |
+| AI is support labor, not authority | Cribl-routed claim, Wazuh-routed claim, AWS-live claim |
+| Human review is required for promotion | autonomous SOC claim, AI-approved disposition, AI-decided disposition, analyst-approved disposition, production AutoSOC claim |
 
 ## What This Prevents
 
