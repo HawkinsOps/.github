@@ -205,7 +205,7 @@ Current HawkinsOperations claims are bounded by source, validation, evidence, an
 
 ## Release / Discussion Links
 
-Official release and discussion links are not asserted here unless they are published.
+Official release and discussion links below use the published direct routes.
 
 | Item | Link state |
 |---|---|
