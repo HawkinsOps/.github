@@ -2,6 +2,10 @@
 
 Start here if reviewing HawkinsOperations.
 
+HawkinsOperations is a governed detection-engineering system that lets AI accelerate security work while evidence and human review authorize claims.
+
+The enterprise AI failure mode is that AI-generated output becomes a public claim, analyst conclusion, operational action, security disposition, or executive truth before evidence and human review authorize it. HawkinsOperations is built to prevent that promotion path.
+
 HawkinsOperations separates source, validation, runtime, signal, evidence, and public-claim truth. Each truth surface has a different owner and promotion gate.
 
 Website content is rendering only. Repository source proves source existence only.
@@ -37,6 +41,8 @@ Public claims require reviewed wording, evidence linkage, stale review, and appr
 - [PR review authority](../governance/PR_REVIEW_AUTHORITY.md) - merge governance routing; not runtime, signal, evidence, public-safe, or production proof unless backed by rulesets or blocking CI
 - [Repository authority map](../architecture/REPO_AUTHORITY_MAP.md)
 - [Control status matrix](../governance/CONTROL_STATUS_MATRIX.md)
+- [Proof Pack 001 official GitHub Release](https://github.com/HawkinsOperations/hawkinsoperations-proof/releases/tag/hawkinsoperations-proof-pack-001) - bounded reviewer ZIP route for HO-DET-001; ZIP SHA256 `44d8a643aa2b113c9e99be0462e699d39af707a67190823cc05bb381907dc452`; public-safe runtime proof remains BLOCKED
+- [Proof Pack 001 Discussion](https://github.com/orgs/HawkinsOperations/discussions/32) - official announcement route; rendering is not proof
 - [HO-DET-001 proof record](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/HO-DET-001.md)
 - [HO-DET-001 runtime packet verifier PR #22](https://github.com/HawkinsOperations/hawkinsoperations-validation/pull/22)
 - [HO-DET-001 verified runtime match proof PR #14](https://github.com/HawkinsOperations/hawkinsoperations-proof/pull/14)
@@ -55,7 +61,6 @@ Allowed current wording:
 - "HO-DET-001 validation enforcement exists for the exact checked controlled-test validation scope."
 - "HO-DET-001 platform runtime contract enforcement exists as a non-promotional guardrail."
 - "HO-DET-001 current public repo proof level is CONTROLLED_TEST_VALIDATED."
-- "HO-DET-001 private/internal runtime material is non-public boundary context."
 - "HO-DET-001 private/internal runtime material is non-public boundary context."
 - "HO-DET-001 public-safe status is NOT_PUBLIC_SAFE."
 - "HOD-001 baseline artifacts are separate reference material."
