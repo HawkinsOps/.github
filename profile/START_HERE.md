@@ -2,6 +2,10 @@
 
 Start here if reviewing HawkinsOperations.
 
+HawkinsOperations is a governed detection-engineering system that lets AI accelerate security work while evidence and human review authorize claims.
+
+The enterprise AI failure mode is that AI-generated output becomes a public claim, analyst conclusion, operational action, security disposition, or executive truth before evidence and human review authorize it. HawkinsOperations is built to prevent that promotion path.
+
 HawkinsOperations separates source, validation, runtime, signal, evidence, and public-claim truth. Each truth surface has a different owner and promotion gate.
 
 Website content is rendering only. Repository source proves source existence only.
