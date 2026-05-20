@@ -72,6 +72,30 @@ These notes are recorded for Phase 1 routing. They do not promote any repository
 - HO-DET-012 has source, validation, and platform progress, but still needs proof and website parity if public routing is desired.
 - Cross-repo parity is report-only unless later promoted to fail-closed under separate approval.
 
+## Phase 2A Validation Enforcement
+
+Phase 2A landed in `hawkinsoperations-validation` through PR #47 and merge commit `e3f9087c0c63c88ef29d0709e335175b167ce624`.
+
+What it proves:
+
+- `baseline-hero-validation-contract` now appears on every validation pull request and main push because the baseline workflow no longer depends on fragile PR path filters.
+- The validation repository has `validation/VALIDATION_REGISTRY.yml` as a source-controlled registry for validation packages.
+- `scripts/verify_validation_registry.py` fails closed for malformed registry entries, missing required files, duplicate detection IDs, unknown proof ceilings, public-safe promotion, runtime/signal promotion, and count drift where applicable.
+- `scripts/verify_all_validation_packages.py` runs registered validators, parity checks, and claim-boundary checks for the registry scope.
+- Source-backed packages keep local/full-org source dependency checks required by default, while isolated CI may skip only the source-contract portion when the registry explicitly opts the package into `ci_source_dependency_mode=skip_if_missing`.
+
+What it does not prove:
+
+- It does not prove runtime-active public proof.
+- It does not prove signal-observed public proof.
+- It does not prove public-safe proof.
+- It does not prove live IdP, SIEM, Splunk, Wazuh, Cribl, or Security Onion operation.
+- It does not prove production-ready, fleet-wide, autonomous SOC, AI-approved disposition, or analyst-approved disposition status.
+
+This is `VALIDATION_REGISTRY_ENFORCED` and `CHECK_ENFORCED_FOR_VALIDATION_REGISTRY_SCOPE` only. It can support `CONTROLLED_TEST_VALIDATED` where the validation records already support that ceiling, but it does not promote proof, runtime, signal, or public-safe state.
+
+The next gate is the proof status index because proof records, not validation checks, authorize public claim ceilings. The control plane should next record which validation-backed detections have proof-index support and which remain `NOT_PUBLIC_SAFE`.
+
 ## Phase 1 Boundary
 
 Phase 1 may document:
