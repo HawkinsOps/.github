@@ -81,6 +81,8 @@ Review current detection source and boundaries in:
 ```powershell
 cd ..\hawkinsoperations-validation
 git status -sb
+python -B scripts\verify_validation_registry.py
+python -B scripts\verify_all_validation_packages.py
 python -B scripts\verify_validation_contract.py
 python -B scripts\validate-id-det-002.py
 python -B scripts\verify-id-det-002-result-parity.py
