@@ -1,0 +1,198 @@
+schema_version: 1
+status: PHASE_1_DOCUMENTED_CONTRACT_ONLY
+control_type: org_required_checks_matrix
+phase_1_boundary:
+  creates_reusable_workflows: false
+  changes_github_settings: false
+  changes_branch_protection: false
+  changes_rulesets: false
+  dispatches_workflows: false
+  promotes_proof: false
+  promotes_public_safe: false
+doctrine:
+  - "Agents generate work."
+  - "Repositories own truth."
+  - "CI checks enforce gates."
+  - "Proof records authorize claim ceilings."
+  - "Website renders only approved public state."
+  - "Human review remains promotion authority."
+matrix_notes:
+  required_checks_rule: "Required checks matter only when they actually appear, run, and pass in the relevant GitHub context."
+  report_only_rule: "Report-only scanners are not fail-closed controls."
+  docs_rule: "Docs and diagrams are not real controls unless backed by checks, required review, branch protection, rulesets, or another blocking mechanism."
+  website_rule: "Website rendering is not proof."
+  green_ci_rule: "Green CI is not merge or promotion authority."
+repos:
+  - repo_name: ".github"
+    truth_surface: "Organization control-plane routing and reviewer entry point."
+    required_checks_observed: []
+    important_non_required_checks:
+      - "No repo-local workflow directory observed in Phase 1 inspection."
+    workflow_file: null
+    job_check_context: null
+    trigger_path_filter_risk: "No repo-local workflow trigger observed; contract text is soft routing until a future check or review requirement exists."
+    report_only_versus_fail_closed_status: "soft-routing-only"
+    next_hardening_gate: "Create an approved org promotion-chain verifier and make it required only after separate approval."
+  - repo_name: "hawkinsoperations-detections"
+    truth_surface: "Detection source truth."
+    required_checks_observed:
+      - "baseline-detection-contract / baseline-hero-artifact-contract"
+      - "Governance Gate / required-files"
+    important_non_required_checks: []
+    workflow_file:
+      - ".github/workflows/baseline-detection-contract.yml"
+      - ".github/workflows/governance-gate.yml"
+    job_check_context:
+      - workflow_name: "baseline-detection-contract"
+        job_id: "baseline-hero-artifact-contract"
+        job_display_name: null
+        verifier_command: "python3 ./scripts/verify_detection_contract.py"
+      - workflow_name: "Governance Gate"
+        job_id: "required-files"
+        job_display_name: null
+        verifier_command: "repository required-file checks"
+    trigger_path_filter_risk: "Observed pull_request and push triggers with no path filter in governance gate; source checks are broad, but only prove checked source-contract scope."
+    report_only_versus_fail_closed_status: "fail-closed only if this check is required by branch protection or ruleset and the job fails on violation."
+    next_hardening_gate: "Add detection-family coverage and claim-boundary verification for ID-DET-002/003/004 and HO-DET-012 source ceilings if approved."
+  - repo_name: "hawkinsoperations-validation"
+    truth_surface: "Validation behavior, fixtures, reports, and claim-boundary scan truth."
+    required_checks_observed:
+      - "baseline-validation-contract / baseline-hero-validation-contract"
+      - "Governance Gate / required-files"
+      - "HO-DET-012 Fixture Loop / ho-det-012-fixture-loop"
+      - "ID-DET-001 Fixture Loop / id-det-001-fixture-loop"
+      - "HO-DET-001 Proof Loop / ho-det-001-proof-loop"
+      - "Public HO-DET-001 Controlled-Test Report / public-ho-det-001-controlled-test-report"
+      - "AWS-DET-001 Fixture Loop / aws-det-001-fixture-loop"
+      - "HO-DET-011 Fixture Loop / ho-det-011-fixture-loop"
+      - "security-onion-visibility-contract / security-onion-visibility-contract"
+    important_non_required_checks:
+      - "Cross Repo Claim Parity / cross-repo-claim-parity is report-only in current workflow command."
+    workflow_file:
+      - ".github/workflows/baseline-validation-contract.yml"
+      - ".github/workflows/governance-gate.yml"
+      - ".github/workflows/ho-det-012-fixture-loop.yml"
+      - ".github/workflows/id-det-001-fixture-loop.yml"
+      - ".github/workflows/ho-det-001-proof-loop.yml"
+      - ".github/workflows/public-ho-det-001-report.yml"
+      - ".github/workflows/aws-det-001-fixture-loop.yml"
+      - ".github/workflows/ho-det-011-fixture-loop.yml"
+      - ".github/workflows/security-onion-visibility-contract.yml"
+      - ".github/workflows/cross-repo-claim-parity.yml"
+    job_check_context:
+      - workflow_name: "baseline-validation-contract"
+        job_id: "baseline-hero-validation-contract"
+        verifier_command: "python -B scripts/verify_validation_contract.py; python -B -m unittest discover -s tests"
+      - workflow_name: "Cross Repo Claim Parity"
+        job_id: "cross-repo-claim-parity"
+        verifier_command: "python -B scripts/verify_cross_repo_claim_parity.py --repo-root \"$GITHUB_WORKSPACE\" --report-only"
+      - workflow_name: "HO-DET-012 Fixture Loop"
+        job_id: "ho-det-012-fixture-loop"
+        verifier_command: "python -B scripts/validate-ho-det-012.py --source-contract skip-if-missing; python -B scripts/verify-ho-det-012-result-parity.py; python -B scripts/scan-ho-det-012-claim-boundaries.py"
+      - workflow_name: "ID-DET-001 Fixture Loop"
+        job_id: "id-det-001-fixture-loop"
+        verifier_command: "python -B scripts/validate-id-det-001.py --source-contract skip-if-missing; python -B scripts/verify-id-det-001-result-parity.py; python -B scripts/scan-id-det-001-claim-boundaries.py"
+      - workflow_name: "HO-DET-001 Proof Loop"
+        job_id: "ho-det-001-proof-loop"
+        verifier_command: "python scripts/validate-ho-det-001.py plus proof-loop boundary and parity commands"
+    trigger_path_filter_risk: "Several fixture loops use path filters, so unrelated PRs may not show every validation context. Baseline validation has broad path filters for specific scripts/reports and may not cover unrelated files."
+    report_only_versus_fail_closed_status: "Validation jobs are fail-closed only inside their checked scope when required; cross-repo parity is report-only."
+    next_hardening_gate: "Promote cross-repo parity from report-only to fail-closed only after separate approval and stable expected outputs."
+  - repo_name: "hawkinsoperations-platform"
+    truth_surface: "Platform runtime/agent boundary contracts and status/plan visibility."
+    required_checks_observed:
+      - "Governance Gate / required-files"
+      - "Governance Gate / ho-det-011-case-packet"
+    important_non_required_checks:
+      - "Local GPU Triage Gate / local-gpu-triage-status is workflow_dispatch-only."
+    workflow_file:
+      - ".github/workflows/governance-gate.yml"
+      - ".github/workflows/local-gpu-triage-gate.yml"
+    job_check_context:
+      - workflow_name: "Governance Gate"
+        job_id: "required-files"
+        verifier_command: "repository required-file checks"
+      - workflow_name: "Governance Gate"
+        job_id: "ho-det-011-case-packet"
+        verifier_command: "python scripts/verify-ho-det-011-case-packet.py"
+      - workflow_name: "Local GPU Triage Gate"
+        job_id: "local-gpu-triage-status"
+        job_display_name: "Local GPU triage status"
+        verifier_command: "python3 -B scripts/verify_local_gpu_triage.py ...; python3 -B scripts/verify-ho-det-001-runtime-contract.py; python3 -B scripts/verify-ho-det-011-case-packet.py"
+    trigger_path_filter_risk: "Dispatch-only workflow does not automatically protect pull requests or main."
+    report_only_versus_fail_closed_status: "Governance gate can be fail-closed if required; local GPU triage is manual/dispatch-only unless separately required."
+    next_hardening_gate: "Add approved platform visibility checks for ID-DET-002/003/004 and HO-DET-012 parity without exposing private runtime evidence."
+  - repo_name: "hawkinsoperations-proof"
+    truth_surface: "Proof records, proof indexes, claim ceilings, and public-proof linkage."
+    required_checks_observed:
+      - "baseline-proof-integrity / baseline-hod001-proof-integrity"
+      - "Governance Gate / required-files"
+      - "ho-det-001-proof-integrity / ho-det-001-proof-integrity"
+      - "Proof Pack 001 Release Check / proof-pack-001-release-check"
+    important_non_required_checks: []
+    workflow_file:
+      - ".github/workflows/baseline-proof-integrity.yml"
+      - ".github/workflows/governance-gate.yml"
+      - ".github/workflows/ho-det-001-proof-integrity.yml"
+      - ".github/workflows/publish-proof-release.yml"
+    job_check_context:
+      - workflow_name: "baseline-proof-integrity"
+        job_id: "baseline-hod001-proof-integrity"
+        verifier_command: "python3 ./scripts/verify_proof_integrity.py"
+      - workflow_name: "ho-det-001-proof-integrity"
+        job_id: "ho-det-001-proof-integrity"
+        verifier_command: "python scripts/verify-ho-det-001-proof-integrity.py; python scripts/verify_proof_integrity.py when present"
+      - workflow_name: "Proof Pack 001 Release Check"
+        job_id: "proof-pack-001-release-check"
+        verifier_command: "python scripts/verify-ho-det-001-proof-integrity.py; python scripts/verify_proof_integrity.py; python scripts/verify-proof-pack-001-release.py"
+    trigger_path_filter_risk: "Observed pull_request and push triggers; proof checks prove only proof-record integrity and release-contract scope."
+    report_only_versus_fail_closed_status: "Fail-closed only if required and only for exact proof integrity scope."
+    next_hardening_gate: "Add proof records/index entries for ID-DET-002/003/004 and HO-DET-012 before any website or public-proof wording claims parity."
+  - repo_name: "hawkinsoperations-website"
+    truth_surface: "Public rendering of approved public state."
+    required_checks_observed:
+      - "Governance Gate / required-files"
+      - "Governance Gate / build"
+    important_non_required_checks: []
+    workflow_file:
+      - ".github/workflows/governance-gate.yml"
+    job_check_context:
+      - workflow_name: "Governance Gate"
+        job_id: "required-files"
+        verifier_command: "repository required-file checks"
+      - workflow_name: "Governance Gate"
+        job_id: "build"
+        verifier_command: "npm run check:site; npm run build"
+    trigger_path_filter_risk: "Observed pull_request and push triggers with no path filter; build can fail site violations but does not prove the rendered claims are true."
+    report_only_versus_fail_closed_status: "Build/check can be fail-closed for website contract scope if required; rendering remains non-proof."
+    next_hardening_gate: "Add website routes only after proof records exist for ID-DET-002/003/004 and HO-DET-012 public routing is approved."
+current_gap_notes:
+  id_det_002_003_004:
+    source: "Detections PR #27 carried source."
+    validation: "Validation PR #46 carried controlled-test validation."
+    platform: "Platform PR #29 carried status/plan visibility."
+    proof: "Pending proof index and proof records."
+    website: "Pending public routes."
+  ho_det_012:
+    source_validation_platform: "Source, validation, and platform progress exist."
+    proof_website: "Proof and website parity are still needed if public routing is desired."
+blocked_claims:
+  - runtime-active public proof
+  - signal-observed public proof
+  - public-safe proof
+  - production-ready status
+  - fleet-wide coverage
+  - complete identity coverage
+  - live IdP proof
+  - live SIEM proof
+  - live Splunk proof
+  - live Wazuh proof
+  - live Cribl proof
+  - live Security Onion proof
+  - autonomous SOC
+  - AI-approved disposition
+  - analyst-approved disposition
+  - customer-ready product
+  - SOCaaS availability
+  - public evidence linkage unless proof index supports it
+
