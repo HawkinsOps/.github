@@ -1,125 +1,117 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="HawkinsOperations Governed Detection Engineering SOC">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="HawkinsOperations — Governed Detection Engineering SOC">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#03060C"/>
-      <stop offset="55%" stop-color="#070C18"/>
-      <stop offset="100%" stop-color="#0A1326"/>
+      <stop offset="0%" stop-color="#02050B"/>
+      <stop offset="55%" stop-color="#060B16"/>
+      <stop offset="100%" stop-color="#091020"/>
     </linearGradient>
     <linearGradient id="slate" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#C9D4E3"/>
-      <stop offset="100%" stop-color="#7A8AA0"/>
+      <stop offset="0%" stop-color="#EEF3FA"/>
+      <stop offset="100%" stop-color="#A7B4C8"/>
     </linearGradient>
-    <linearGradient id="proofLine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1E7BFF" stop-opacity="0.20"/>
-      <stop offset="40%" stop-color="#3FC9FF" stop-opacity="0.85"/>
-      <stop offset="75%" stop-color="#F2B544" stop-opacity="0.90"/>
-      <stop offset="100%" stop-color="#3FC9FF" stop-opacity="0.30"/>
-    </linearGradient>
-    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
-      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E7BFF" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#1E7BFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1E7BFF" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E7BFF" stroke-opacity="0.06" stroke-width="0.6"/>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="78%">
+      <stop offset="58%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.60"/>
+    </radialGradient>
+    <linearGradient id="taglineAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3FC9FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1E7BFF" stop-opacity="0.1"/>
+    </linearGradient>
+    <pattern id="grid" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M 44 0 L 0 0 0 44" fill="none" stroke="#1E7BFF" stroke-opacity="0.05" stroke-width="0.6"/>
     </pattern>
   </defs>
 
-  <!-- Background -->
+  <!-- Background layers -->
   <rect width="1200" height="360" fill="url(#bg)"/>
   <rect width="1200" height="360" fill="url(#grid)"/>
+  <ellipse cx="232" cy="180" rx="430" ry="300" fill="url(#glow)"/>
   <rect width="1200" height="360" fill="url(#vignette)"/>
 
-  <!-- Subtle horizontal circuit traces, low opacity, intentional -->
-  <g stroke="#1E7BFF" stroke-opacity="0.18" stroke-width="0.8" fill="none">
-    <path d="M 0 70 L 360 70"/>
-    <path d="M 840 70 L 1200 70"/>
-    <path d="M 0 290 L 360 290"/>
-    <path d="M 840 290 L 1200 290"/>
+  <!-- Thin HUD traces, low opacity -->
+  <g stroke="#1E7BFF" stroke-opacity="0.16" stroke-width="0.8" fill="none">
+    <path d="M 470 60 L 1140 60"/>
+    <path d="M 470 300 L 1140 300"/>
   </g>
-  <g fill="#3FC9FF" fill-opacity="0.55">
-    <circle cx="360" cy="70" r="1.6"/>
-    <circle cx="840" cy="70" r="1.6"/>
-    <circle cx="360" cy="290" r="1.6"/>
-    <circle cx="840" cy="290" r="1.6"/>
+  <g fill="#3FC9FF" fill-opacity="0.5">
+    <circle cx="1140" cy="60" r="1.7"/>
+    <circle cx="1140" cy="300" r="1.7"/>
   </g>
 
-  <!-- Monogram: controlled ring, slate H, single cyan accent. No white blob. -->
-  <g transform="translate(190 180)">
-    <!-- Outer governance ring -->
-    <circle cx="0" cy="0" r="108" fill="none" stroke="#1E7BFF" stroke-opacity="0.35" stroke-width="1"/>
-    <!-- Inner control ring with cyan proof-tick -->
-    <circle cx="0" cy="0" r="92" fill="#070C18" stroke="#3FC9FF" stroke-opacity="0.75" stroke-width="1.4"/>
-    <!-- Single proof-tick on inner ring (cyan), no halo, no glow -->
-    <circle cx="92" cy="0" r="3" fill="#3FC9FF"/>
-    <!-- Human-review gate marker (amber), single, small -->
-    <circle cx="-92" cy="0" r="3" fill="#F2B544"/>
-    <!-- Slate H letterform -->
+  <!-- ===== Monogram: large crosshair / orbit H mark ===== -->
+  <g transform="translate(232 180)">
+    <!-- Outer orbit ring (dashed) -->
+    <circle cx="0" cy="0" r="150" fill="none" stroke="#1E7BFF" stroke-opacity="0.30" stroke-width="1" stroke-dasharray="2 9"/>
+    <!-- Governance ring -->
+    <circle cx="0" cy="0" r="132" fill="none" stroke="#1E7BFF" stroke-opacity="0.40" stroke-width="1"/>
+    <!-- Inner control disc -->
+    <circle cx="0" cy="0" r="116" fill="#050C18" stroke="#3FC9FF" stroke-opacity="0.80" stroke-width="1.6"/>
+    <!-- Crosshair ticks at N / E / S / W on the inner ring -->
+    <g stroke="#3FC9FF" stroke-opacity="0.65" stroke-width="1.4">
+      <line x1="0" y1="-128" x2="0" y2="-104"/>
+      <line x1="0" y1="104" x2="0" y2="128"/>
+      <line x1="-128" y1="0" x2="-104" y2="0"/>
+      <line x1="104" y1="0" x2="128" y2="0"/>
+    </g>
+    <!-- Proof-tick node (cyan, E) and human-review node (amber, W) -->
+    <circle cx="116" cy="0" r="4" fill="#3FC9FF"/>
+    <circle cx="-116" cy="0" r="4" fill="#F2B544"/>
+    <!-- H letterform, silver, dominant -->
     <g fill="url(#slate)">
-      <rect x="-48" y="-50" width="16" height="100" rx="1.5"/>
-      <rect x="32" y="-50" width="16" height="100" rx="1.5"/>
-      <rect x="-48" y="-8" width="80" height="14" rx="1"/>
+      <rect x="-58" y="-62" width="20" height="124" rx="2"/>
+      <rect x="38" y="-62" width="20" height="124" rx="2"/>
+      <rect x="-58" y="-10" width="96" height="18" rx="1.5"/>
     </g>
   </g>
 
   <!-- Vertical separator -->
-  <line x1="372" y1="80" x2="372" y2="280" stroke="#1E7BFF" stroke-opacity="0.28" stroke-width="1"/>
+  <line x1="430" y1="74" x2="430" y2="286" stroke="#1E7BFF" stroke-opacity="0.28" stroke-width="1"/>
 
   <g font-family="Segoe UI, Inter, system-ui, sans-serif">
     <!-- Wordmark -->
-    <text x="412" y="120" font-size="46" font-weight="700" letter-spacing="2.6" fill="url(#slate)">
+    <text x="470" y="132" font-size="52" font-weight="800" letter-spacing="2.5" fill="url(#slate)">
       <tspan>HAWKINS</tspan><tspan fill="#3FC9FF">OPERATIONS</tspan>
     </text>
 
     <!-- Subtitle -->
-    <line x1="412" y1="138" x2="488" y2="138" stroke="#3FC9FF" stroke-width="1.5" opacity="0.85"/>
-    <text x="498" y="142" font-size="13" letter-spacing="5.5" fill="#9DB1CC" font-weight="600">
+    <line x1="472" y1="160" x2="540" y2="160" stroke="#3FC9FF" stroke-width="1.5" opacity="0.85"/>
+    <text x="552" y="164" font-size="13.5" letter-spacing="5.5" fill="#9DB1CC" font-weight="600">
       GOVERNED DETECTION ENGINEERING SOC
     </text>
 
-    <!-- Doctrine -->
-    <text x="412" y="180" font-size="15" fill="#D6DEEC" font-weight="500">
-      AI generates work. Evidence and human review authorize claims.
+    <!-- Tagline: PROOF > TRUTH > AUTHORITY -->
+    <text x="471" y="208" font-size="22" font-weight="700" letter-spacing="4.5" fill="#E6EDF7">
+      <tspan>PROOF</tspan><tspan fill="#3FC9FF" dx="6">&gt;</tspan><tspan dx="6">TRUTH</tspan><tspan fill="#3FC9FF" dx="6">&gt;</tspan><tspan dx="6">AUTHORITY</tspan>
     </text>
 
-    <!-- Boundary chips: CONTROLLED_TEST_VALIDATED, HO-DET-001, NOT_PUBLIC_SAFE, BLOCKED -->
+    <!-- Doctrine microline -->
+    <text x="472" y="238" font-size="13.5" fill="#C2CEE0" font-weight="500">
+      AI is labor. Evidence and human review authorize claims.
+    </text>
+
+    <!-- Boundary chips -->
     <g font-size="10.5" font-weight="600" letter-spacing="1">
-      <rect x="412" y="204" width="232" height="26" rx="13" fill="#0A172E" stroke="#3FC9FF" stroke-opacity="0.75" stroke-width="1"/>
-      <text x="528" y="221" text-anchor="middle" fill="#3FC9FF">CONTROLLED_TEST_VALIDATED</text>
+      <rect x="471" y="256" width="230" height="26" rx="13" fill="#0A172E" stroke="#3FC9FF" stroke-opacity="0.75" stroke-width="1"/>
+      <text x="586" y="273" text-anchor="middle" fill="#3FC9FF">CONTROLLED_TEST_VALIDATED</text>
 
-      <rect x="654" y="204" width="100" height="26" rx="13" fill="#0A172E" stroke="#3FC9FF" stroke-opacity="0.75"/>
-      <text x="704" y="221" text-anchor="middle" fill="#3FC9FF">HO-DET-001</text>
+      <rect x="713" y="256" width="100" height="26" rx="13" fill="#0A172E" stroke="#3FC9FF" stroke-opacity="0.75"/>
+      <text x="763" y="273" text-anchor="middle" fill="#3FC9FF">HO-DET-001</text>
 
-      <rect x="764" y="204" width="138" height="26" rx="13" fill="#0A172E" stroke="#A2ABB8" stroke-opacity="0.55"/>
-      <text x="833" y="221" text-anchor="middle" fill="#C9D4E3">NOT_PUBLIC_SAFE</text>
+      <rect x="825" y="256" width="138" height="26" rx="13" fill="#0A172E" stroke="#A2ABB8" stroke-opacity="0.55"/>
+      <text x="894" y="273" text-anchor="middle" fill="#C9D4E3">NOT_PUBLIC_SAFE</text>
 
-      <rect x="912" y="204" width="86" height="26" rx="13" fill="#0A172E" stroke="#F2B544" stroke-opacity="0.75"/>
-      <text x="955" y="221" text-anchor="middle" fill="#F2B544">BLOCKED</text>
+      <rect x="975" y="256" width="86" height="26" rx="13" fill="#0A172E" stroke="#F2B544" stroke-opacity="0.75"/>
+      <text x="1018" y="273" text-anchor="middle" fill="#F2B544">BLOCKED</text>
     </g>
 
-    <!-- Proof route line: AI LABOR -> SOURCE -> VALIDATION -> PROOF -> HUMAN REVIEW -> PUBLIC BOUNDARY -->
-    <line x1="412" y1="262" x2="1140" y2="262" stroke="url(#proofLine)" stroke-width="1.4"/>
-    <!-- Stop dots at each station -->
-    <g>
-      <circle cx="412" cy="262" r="3" fill="#3FC9FF"/>
-      <circle cx="558" cy="262" r="3" fill="#3FC9FF"/>
-      <circle cx="704" cy="262" r="3" fill="#3FC9FF"/>
-      <circle cx="850" cy="262" r="3.2" fill="#3FC9FF"/>
-      <circle cx="996" cy="262" r="3.2" fill="#F2B544"/>
-      <circle cx="1140" cy="262" r="3" fill="#3FC9FF"/>
-    </g>
-    <!-- Station labels -->
-    <g font-size="10" font-weight="600" letter-spacing="2" fill="#9DB1CC">
-      <text x="412" y="282" text-anchor="middle">AI LABOR</text>
-      <text x="558" y="282" text-anchor="middle">SOURCE</text>
-      <text x="704" y="282" text-anchor="middle">VALIDATION</text>
-      <text x="850" y="282" text-anchor="middle" fill="#3FC9FF">PROOF</text>
-      <text x="996" y="282" text-anchor="middle" fill="#F2B544">HUMAN REVIEW</text>
-      <text x="1140" y="282" text-anchor="middle" fill="#C9D4E3">PUBLIC BOUNDARY</text>
-    </g>
-
-    <!-- Footnote -->
-    <text x="412" y="312" font-size="11" fill="#5C6B82" letter-spacing="0.4">
-      Website/GitHub rendering is not proof.
+    <!-- Boundary microline -->
+    <text x="472" y="308" font-size="11" fill="#5C6B82" letter-spacing="0.5">
+      Rendering is not proof.
     </text>
   </g>
 

@@ -1,4 +1,4 @@
-![HawkinsOperations Governed Detection Engineering SOC](./assets/hawkinsoperations-banner.svg)
+![HawkinsOperations — Governed Detection Engineering SOC](./assets/hawkinsoperations-banner.svg)
 
 <div align="center">
 
