@@ -2,8 +2,6 @@
   <img src="./assets/hawkinsoperations-org-banner.png" alt="HawkinsOperations — AI Security Operations banner" width="100%" />
 </p>
 
-![HawkinsOperations — Governed Detection Engineering SOC](./assets/hawkinsoperations-banner.svg)
-
 <div align="center">
 
 # HawkinsOperations
