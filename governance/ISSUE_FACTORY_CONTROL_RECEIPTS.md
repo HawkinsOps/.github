@@ -154,6 +154,23 @@ Purpose: advances issue [#39](https://github.com/HawkinsOperations/.github/issue
 - Project #1 is not an active reviewer route; live ProjectV2 lookup did not resolve org Project #1 during the follow-up control-surface cleanup pass.
 - Board state must not be treated as merge approval, issue closure authority, runtime truth, signal truth, evidence truth, public proof, or public-safe status.
 
+## Reviewer Metrics Pipeline Reconciliation Receipt
+
+Purpose: gives reviewers a single repo-backed reconciliation row for the "big number without lying" metrics pipeline while preserving the strict Lifetime Case Ledger boundary.
+
+| Metric / status | Current bounded value | Owning source | Boundary |
+| --- | --- | --- | --- |
+| Lifetime Governed Cases | 4 | `hawkinsoperations-platform` Lifetime Case Ledger state and `hawkinsoperations-proof` public ledger summary | Strict governed case count only; detection fires do not increase this number. |
+| Detection Activity / controlled validation fire count | 49 | `hawkinsoperations-validation` detection activity ledger | Controlled validation activity only; not runtime activity, signal observation, public proof, or governed case append. |
+| Validation Case Count | 106 | `hawkinsoperations-validation` validation registry and detection activity ledger | Controlled fixture count only; not production coverage or public-safe proof. |
+| Proof Record Count | 8 | `hawkinsoperations-proof` reviewer metrics summary and proof map | Proof-record routing count only; not public-safe approval or claim promotion. |
+| Blocked Claim Count | 31 | Reviewer metrics state and proof summary blocked-claim lists | Prevented-promotion visibility only; the blocked claims remain blocked. |
+| Project Board reconciliation status | `REPO_BACKED_RECONCILIATION_PLAN_NO_PROJECT_MUTATION` | `.github` standing-control receipts plus platform/proof reviewer metrics state | Project metadata remains report-only and not proof authority; no GitHub Project mutation is performed. |
+
+Reviewer-facing allowed wording: "HawkinsOperations exposes strict governed cases separately from broader controlled validation, proof, blocked-claim, and Project Board reconciliation activity."
+
+Blocked wording: do not say detection fires are governed cases, do not describe Project metadata as proof authority, and do not claim runtime-active, signal-observed, public-safe, production-ready, autonomous SOC, AI-approved disposition, analyst-approved disposition, Cribl-routed, Wazuh-routed, AWS-live, fleet-wide, or live Splunk public proof from this pipeline.
+
 ## Dirty Repo State / Repo Hygiene Receipt
 
 Purpose: advances issue [#5](https://github.com/HawkinsOperations/.github/issues/5).

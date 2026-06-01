@@ -46,6 +46,10 @@ Public claims require reviewed wording, evidence linkage, stale review, and appr
 
 Current ledger snapshot: the proof-owned Lifetime Case Ledger public summary records 4 ledger events, 4 total cases, 0 public-safe cases, and 0 closed cases. Ledger status remains `NOT_PUBLIC_SAFE`; front-door/status proof ceiling remains `SCHEMA_CONTRACT_VERIFIER_EXISTS_ONLY`.
 
+Current Reviewer metrics pipeline snapshot: Lifetime Governed Cases: 4; Detection Activity / controlled validation fire count: 49; Validation Case Count: 106; Proof Record Count: 8; Blocked Claim Count: 31; Project Board reconciliation status: `REPO_BACKED_RECONCILIATION_PLAN_NO_PROJECT_MUTATION`.
+
+Reviewer metrics boundary: the Lifetime Governed Cases number stays strict and comes from the governed Lifetime Case Ledger route. Detection Activity / controlled validation fire count, Validation Case Count, Proof Record Count, and Blocked Claim Count are separate reviewer activity metrics and must not be counted as governed cases. Project Board reconciliation is repo-backed routing/status only; Project metadata is not proof authority and no GitHub Project mutation is performed by this pipeline.
+
 ### 30-second reviewer path
 
 1. Start with the [organization profile](./README.md) for the system summary.
@@ -75,6 +79,7 @@ Current ledger snapshot: the proof-owned Lifetime Case Ledger public summary rec
 | Where is public rendering? | [hawkinsoperations-website](https://github.com/HawkinsOperations/hawkinsoperations-website) |
 | Where is the operating cockpit? | [private org Control Board route](https://github.com/orgs/HawkinsOperations/projects/2) |
 | Where is the ledger summary? | [Lifetime Case Ledger public summary](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/lifetime-case-ledger-v1-public-summary.json) |
+| Where is the reviewer metrics summary? | [Reviewer metrics proof summary](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/reviewer-metrics-pipeline-v1-summary.json) |
 
 ### What each repo owns
 
@@ -94,6 +99,7 @@ Current ledger snapshot: the proof-owned Lifetime Case Ledger public summary rec
 | Proven within current public ceiling | HO-DET-001 source exists and controlled-test validation is recorded for the stated fixture scope. |
 | Route-safe | GitHub and website surfaces route reviewers to source, validation, and proof records. |
 | Ledger route-safe | The proof-owned Lifetime Case Ledger public summary routes bounded counts only: 4 events, 4 cases, 0 public-safe cases, 0 closed cases. |
+| Reviewer metrics route-safe | The reviewer metrics pipeline routes separate bounded numbers for Lifetime Governed Cases, Detection Activity / controlled validation fire count, Validation Case Count, Proof Record Count, Blocked Claim Count, and Project Board reconciliation status. |
 | Blocked | Runtime-active, signal-observed, public-safe runtime proof, production-ready, autonomous SOC, AI-approved disposition, analyst-approved disposition, Cribl-routed, Wazuh-routed, AWS-live, fleet-wide, and live Splunk firing claims. |
 
 ### What not to infer
@@ -129,6 +135,7 @@ flowchart LR
 - [Proof Pack 001 Discussion](https://github.com/orgs/HawkinsOperations/discussions/32) - official announcement route; rendering is not proof
 - [Private org Control Board route](https://github.com/orgs/HawkinsOperations/projects/2) - operating cockpit for current work visibility; Project #1 is not an active reviewer route; not proof authority, merge authority, or project metadata approval
 - [Lifetime Case Ledger public summary](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/lifetime-case-ledger-v1-public-summary.json) - bounded proof-owned count summary; ledger status remains `NOT_PUBLIC_SAFE`
+- [Reviewer metrics proof summary](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/reviewer-metrics-pipeline-v1-summary.json) - bounded reviewer metrics route; keeps strict governed cases separate from broader activity counts and Project Board reconciliation status
 - [HO-DET-001 proof record](https://github.com/HawkinsOperations/hawkinsoperations-proof/blob/main/proof/records/HO-DET-001.md)
 - [HO-DET-001 runtime packet verifier PR #22](https://github.com/HawkinsOperations/hawkinsoperations-validation/pull/22)
 - [HO-DET-001 verified runtime match proof PR #14](https://github.com/HawkinsOperations/hawkinsoperations-proof/pull/14)
