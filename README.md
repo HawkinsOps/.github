@@ -21,6 +21,8 @@ The public organization overview is controlled by [profile/README.md](profile/RE
 
 Current proof records live in [hawkinsoperations-proof](https://github.com/HawkinsOperations/hawkinsoperations-proof), and the current HO-DET-001 public ceiling remains `CONTROLLED_TEST_VALIDATED`.
 
+.github is routing/governance only. It does not own proof authority, runtime truth, signal truth, public-safe status, or website rendering truth.
+
 The front-door/status proof ceiling for the command-center and ledger-status route remains `SCHEMA_CONTRACT_VERIFIER_EXISTS_ONLY`.
 
 The proof-owned Lifetime Case Ledger public summary currently records a bounded count route only: 4 ledger events, 4 total cases, 0 public-safe cases, and 0 closed cases. Its ledger status remains `NOT_PUBLIC_SAFE`, and its proof ceiling remains `SCHEMA_CONTRACT_VERIFIER_EXISTS_ONLY`.
